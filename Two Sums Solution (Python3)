@@ -1,0 +1,10 @@
+class Solution:
+   def twoSum(self, nums: List[int], target: int) -> List[int]:
+       num_indices = {}
+       for i, value in enumerate(nums):
+           compliment = target - nums[i]
+           
+           if compliment in num_indices:
+               return [i, num_indices[compliment]]
+            
+           num_indices[value] = i 
