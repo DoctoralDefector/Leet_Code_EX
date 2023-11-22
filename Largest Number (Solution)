@@ -1,0 +1,21 @@
+from typing import List
+from functools import cmp_to_key
+
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        nums_str = [str(num) for num in nums]
+
+    # Define custom sorting function
+        def custom_sort(x, y):
+            return int(y + x) - int(x + y)
+
+    # Sort the numbers using the custom sorting function
+        nums_str.sort(key=cmp_to_key(custom_sort))
+
+    # Join the sorted numbers to form the largest number
+        result = ''.join(nums_str)
+
+    # Remove leading zeros, except when the result is "0"
+        result = '0' if result[0] == '0' else result
+
+        return result
