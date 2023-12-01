@@ -1,0 +1,14 @@
+class Solution:
+    def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
+        x, y = len(grid), len(grid[0])
+        flattened = [grid[i][j] for i in range(x) for j in range(y)]
+        k %= len(flattened)
+    
+        flattened = flattened[-k:] + flattened[:-k]
+    
+        result = [[0] * y for _ in range(x)]
+        for i in range(x):
+            for j in range(y):
+                result[i][j] = flattened[i * y + j]
+    
+        return result
